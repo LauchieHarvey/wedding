@@ -1,8 +1,22 @@
 <script lang="ts">
-  console.log("Hello Svelte world!");
+  import {Router, Route} from "svelte5-router";
+  import Home from "./scenes/Home.svelte";
+  import Rsvp from "./scenes/Rsvp.svelte";
+
+  export let url = "";
 </script>
 
-<main>
-  <h1>Thejas & Lauchie</h1>
-  <p>Hello Svelte world!</p>
-</main>
+
+<Router {url}>
+  <Route path="/rsvp">
+    <Rsvp/>
+  </Route>
+
+  <Route path="/rsvp/:inviteCode">
+    {#snippet children(params)}
+      <Rsvp inviteCode={params.inviteCode}/>
+    {/snippet}
+  </Route>
+
+  <Route path="*" component={Home}/>
+</Router>
