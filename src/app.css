@@ -1,0 +1,71 @@
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("/fonts/CormorantGaramond-VariableFont_wght.woff2")
+    format("woff2-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant Infant";
+  src: url("/fonts/CormorantInfant-VariableFont_wght.woff2")
+    format("woff2-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --heading-font: "Cormorant Garamond", serif;
+  --body-font: "Cormorant Infant", serif;
+  --primary-color: hsl(38, 100%, 98%);
+  --secondary-color: hsl(142, 29%, 15%);
+
+  font-family: var(--body-font);
+  background-color: var(--primary-color);
+}
+
+a {
+  color: hsl(200, 80, 30);
+}
+a:hover {
+  color: hsl(200, 80, 20);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+b,
+strong,
+em {
+  color: var(--secondary-color);
+}
+
+h1 {
+  font-size: 3rem;
+  font-family: var(--heading-font);
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 2.4rem;
+  font-family: var(--heading-font);
+  font-weight: 400;
+}
+
+h3 {
+  font-size: 2.2rem;
+  font-family: var(--heading-font);
+  font-weight: 400;
+}
+
+h4 {
+  font-size: 2rem;
+  font-family: var(--heading-font);
+  font-weight: 400;
+}
