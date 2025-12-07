@@ -1,9 +1,12 @@
+<script>
+    import Header from "../components/Header.svelte";
+    import WeddingInfo from "../components/WeddingInfo.svelte";
+</script>
+
+
+<Header/>
 
 <main>
-    <div class="header">
-        <h2>T & L</h2>
-    </div>
-
     <section class="cta">
         <h1>Thejas & Lauchie</h1>
         <p>18th of July 2026</p>
@@ -13,21 +16,10 @@
 
     <img src="/botanical-gardens.jpg" alt="Hugging in the botanical gardens"/>
 
-    <p>test</p>
+    <WeddingInfo/>
 </main>
 
 <style>
-    .header {
-        border-bottom: 1px solid var(--secondary-color);
-        text-align: center;
-    }
-
-    .header h2 {
-        font-size: 1.5rem;
-        margin-top: 0.8rem;
-        margin-bottom: 0.8rem;
-    }
-
     .cta {
         text-align: center;
         border-bottom: 1px solid var(--secondary-color);
