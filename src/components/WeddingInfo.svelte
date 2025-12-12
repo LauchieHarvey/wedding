@@ -122,6 +122,11 @@
         gap: 2.5rem;
         margin-left: 3rem;
         margin-right: 3rem;
+
+        @media (min-width:1024px) {
+            margin-left: 30svw;
+            margin-right: 30svw;
+        }
     }
 
     dl div {

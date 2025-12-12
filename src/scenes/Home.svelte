@@ -44,6 +44,11 @@
         display: inline-block;
     }
 
+    .cta a:hover {
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+    }
+
     img {
         width: 100svw;
         filter: grayscale(70%);

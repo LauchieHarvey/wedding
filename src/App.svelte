@@ -12,11 +12,5 @@
     <Rsvp/>
   </Route>
 
-  <Route path="/rsvp/:inviteCode">
-    {#snippet children(params)}
-      <Rsvp inviteCode={params.inviteCode}/>
-    {/snippet}
-  </Route>
-
   <Route path="*" component={Home}/>
 </Router>
