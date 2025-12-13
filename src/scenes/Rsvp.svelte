@@ -1,9 +1,46 @@
 <script lang="ts">
+    import { addDoc, collection } from "firebase/firestore";
     import Header from "../components/Header.svelte";
     import WeddingInfo from "../components/WeddingInfo.svelte";
+    import { db } from "../main";
+    import { RsvpStorageService } from "../services/rsvp-storage-service";
+    import toast from "svelte-5-french-toast";
 
-    const handleSubmitRsvp = (e: SubmitEvent) => {
+    const fullNameKey = "full-name";
+    const attendanceKey = "attendance"
+    const toastOptions = {position: "bottom-center", duration: 6_000, width: 'fit-content'} as const;
+
+    let isLoading = $state<boolean>(false);
+
+    const handleSubmitRsvp = async (e: SubmitEvent) => {
         e.preventDefault();
+
+        isLoading = true;
+        const loadingToastId = toast.loading("Saving RSVP...", toastOptions);
+
+        const data = new FormData(e.target as HTMLFormElement);
+
+        const fullName = data.get(fullNameKey)?.toString();
+        const attendance = data.get(attendanceKey)?.toString();
+
+        try {
+            const res = await addDoc(
+                collection(db, "rsvps"), 
+                {[fullNameKey]: fullName, [attendanceKey]: attendance}
+            );
+
+            RsvpStorageService.addRsvpId(res.id);
+
+            toast.remove(loadingToastId);
+            toast.success(attendance === 'not-coming' ? "Successfully saved." : "See you there!", toastOptions);
+        } catch (e) {
+            console.error(e);
+
+            toast.remove(loadingToastId);
+            toast.error("Failed to save. Reach out directly if the problem persists.", toastOptions);
+        } finally {
+            isLoading = false;
+        }
     }
 
 </script>
@@ -16,11 +53,12 @@
 
         <form onsubmit={handleSubmitRsvp}>
 
-            <p>The 1st of May 2026 is the last day that RSVPs and changes to RSVPs will be open.</p>
+            <p>Please submit your RSVP before the 1st of May 2026</p>
 
             <label class="full-name-label">
                 <span>Full name</span>
-                <input id="full-name" type="text" />
+
+                <input name={fullNameKey} type="text" autocomplete="name" required/>
             </label>
 
             <fieldset>
@@ -28,21 +66,24 @@
 
                 <div>
                     <input type="radio" id="option-1" name="attendance" value="both" checked>
+
                     <label for="option-1">attending the ceremony & the reception</label>
                 </div>
 
                 <div>
-                    <input type="radio" id="option-2" name="attendance" value="reception">
+                    <input type="radio" id="option-2" name="attendance" value="ceremony">
+
                     <label for="option-2">only attending the ceremony</label>
                 </div>
 
                 <div>
                     <input type="radio" id="option-3" name="attendance" value="not-coming">
+
                     <label for="option-3">unable to attend</label>
                 </div>
             </fieldset>
 
-            <button type="submit">Submit</button>
+            <button type="submit" disabled={isLoading}>Submit</button>
         </form>
 
     </section>
@@ -102,6 +143,7 @@
         padding: 0.4rem;
         font-size: 1.2rem;
         font-family: var(--body-font);
+        background-color: white;
     }
 
     input[type="text"]:focus-visible {

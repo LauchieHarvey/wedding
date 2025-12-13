@@ -1,13 +1,9 @@
 import { mount } from "svelte";
 import "./app.css";
 import App from "./App.svelte";
-
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getFirestore } from "firebase/firestore";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAw6Iv6TJmV8jR2pjULgv9MIEAuf6eKz-M",
   authDomain: "nandaandlauchie.firebaseapp.com",
@@ -18,7 +14,8 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const firbaseApp = initializeApp(firebaseConfig);
+export const firebaseApp = initializeApp(firebaseConfig);
+export const db = getFirestore(firebaseApp);
 
 const app = mount(App, {
   target: document.getElementById("app")!,

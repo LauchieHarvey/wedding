@@ -20,6 +20,7 @@
     "vite": "^7.2.4"
   },
   "dependencies": {
-    "firebase": "^12.6.0"
+    "firebase": "^12.6.0",
+    "svelte-5-french-toast": "^2.0.6"
   }
 }
