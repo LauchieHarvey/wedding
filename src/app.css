@@ -78,3 +78,29 @@ h4 {
 p {
   font-size: 1rem;
 }
+
+button[type="submit"] {
+  font-size: 1.6rem;
+  background-color: inherit;
+  border-radius: 999px;
+  border: 1px solid var(--secondary-color);
+  font-family: var(--body-font);
+  font-weight: 300;
+  padding: 0.2rem 2rem;
+  width: fit-content;
+}
+
+button[type="submit"]:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  cursor: pointer;
+}
+
+input[type="radio"] {
+  accent-color: var(--secondary-color);
+  transform: scale(1.2);
+}
+
+input[type="radio"]:hover {
+  cursor: pointer;
+}

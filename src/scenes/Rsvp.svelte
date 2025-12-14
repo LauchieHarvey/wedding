@@ -5,12 +5,15 @@
     import { db } from "../main";
     import { RsvpStorageService } from "../services/rsvp-storage-service";
     import toast from "svelte-5-french-toast";
+    import { Link } from "svelte5-router";
+    import { Attendance } from "../types";
 
     const fullNameKey = "full-name";
     const attendanceKey = "attendance"
-    const toastOptions = {position: "bottom-center", duration: 6_000, width: 'fit-content'} as const;
+    const toastOptions = {position: "bottom-center", duration: 6_000} as const;
 
     let isLoading = $state<boolean>(false);
+    let rsvpIds = $state<string[]>(RsvpStorageService.getRsvpIds());
 
     const handleSubmitRsvp = async (e: SubmitEvent) => {
         e.preventDefault();
@@ -29,7 +32,7 @@
                 {[fullNameKey]: fullName, [attendanceKey]: attendance}
             );
 
-            RsvpStorageService.addRsvpId(res.id);
+            rsvpIds = RsvpStorageService.addRsvpId(res.id);
 
             toast.remove(loadingToastId);
             toast.success(attendance === 'not-coming' ? "Successfully saved." : "See you there!", toastOptions);
@@ -53,7 +56,14 @@
 
         <form onsubmit={handleSubmitRsvp}>
 
-            <p>Please submit your RSVP before the 1st of May 2026</p>
+            <p>
+                Please submit your RSVPs before the 1st of May 2026
+                {#if rsvpIds.length > 0}
+                    <br/>
+                    <br/>
+                    You have submitted {rsvpIds.length} RSVPs on this device. Click <Link to="/rsvp/update">here</Link> to edit them.
+                {/if}
+            </p>
 
             <label class="full-name-label">
                 <span>Full name</span>
@@ -65,19 +75,19 @@
                 <legend>I will be</legend>
 
                 <div>
-                    <input type="radio" id="option-1" name="attendance" value="both" checked>
+                    <input type="radio" id="option-1" name="attendance" value={Attendance.BOTH} checked>
 
                     <label for="option-1">attending the ceremony & the reception</label>
                 </div>
 
                 <div>
-                    <input type="radio" id="option-2" name="attendance" value="ceremony">
+                    <input type="radio" id="option-2" name="attendance" value={Attendance.CEREMONY_ONLY}>
 
                     <label for="option-2">only attending the ceremony</label>
                 </div>
 
                 <div>
-                    <input type="radio" id="option-3" name="attendance" value="not-coming">
+                    <input type="radio" id="option-3" name="attendance" value={Attendance.NOT_COMING}>
 
                     <label for="option-3">unable to attend</label>
                 </div>
@@ -148,32 +158,6 @@
 
     input[type="text"]:focus-visible {
         outline: 1px solid var(--secondary-color)
-    }
-
-    input[type="radio"] {
-        accent-color: var(--secondary-color);
-        transform: scale(1.2);
-    }
-
-    input[type="radio"]:hover {
-        cursor: pointer;
-    }
-
-    button {
-        font-size: 2rem;
-        background-color: inherit;
-        border-radius: 999px;
-        border: 1px solid var(--secondary-color);
-        font-family: var(--body-font);
-        font-weight: 300;
-        padding: 0.2rem 2rem;
-        width: fit-content;
-    }
-
-    button:hover {
-        text-decoration: underline;
-        text-decoration-thickness: 1px;
-        cursor: pointer;
     }
 
     fieldset {
