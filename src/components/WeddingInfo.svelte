@@ -1,6 +1,17 @@
 <script>
-  import Header from "./Header.svelte";
+    const urlParams = new URLSearchParams(window.location.search);
 
+    if (urlParams.has("dinner")) {
+        localStorage.setItem("dinner", "true");
+    }
+    if (urlParams.has("party")) {
+        localStorage.setItem("party", "true");
+    }
+
+    const isInvitedToDinner = localStorage.getItem("dinner") != null;
+    const isInvitedToParty = localStorage.getItem("party") != null;
+
+    const partyInfoDirection = isInvitedToDinner ? "left" : "right";
 </script>
 <section>
     <h2>Wedding Ceremony</h2>
@@ -38,68 +49,114 @@
     </dl>
 </section>
 
-<section>
-    <h2>Wedding Reception</h2>
+{#if isInvitedToDinner}
+    <section>
+        <h2>Family Reception</h2>
 
-    <dl>
-        <div class="right">
-            <dt>Date</dt>
+        <dl>
+            <div class="right">
+                <dt>Date</dt>
 
-            <dd>18/07/2026</dd>
-        </div>
+                <dd>18/07/2026</dd>
+            </div>
 
-        <div class="right">
-            <dt>Start</dt>
+            <div class="right">
+                <dt>Start</dt>
 
-            <dd>4pm</dd>
-        </div>
+                <dd>5:30pm</dd>
+            </div>
 
-        <div class="right">
-            <dt>Dress</dt>
+            <div class="right">
+                <dt>Dress</dt>
 
-            <dd>
-                <a href="#dress-code">See dress code</a>
-            </dd>
-        </div>
+                <dd>
+                    <a href="#dress-code">See dress code</a>
+                </dd>
+            </div>
 
-        <div class="right">
-            <dt>Menu</dt>
+            <div class="right">
+                <dt>Menu</dt>
 
-            <dd>Indian buffet style</dd>
-        </div>
+                <dd>
+                    <a href="https://todo.com" target="_blank">
+                        TODO
+                    </a>
+                </dd>
+            </div>
 
-        <div class="right">
-            <dt>Location</dt>
+            <div class="right">
+                <dt>Location</dt>
 
-            <dd>
-                <a href="https://maps.app.goo.gl/ihRVrai5PYJsQRXg9" target="_blank">
-                    Cherbon Waters
-                </a>
-            </dd>
-        </div>
-    </dl>
-</section>
+                <dd>
+                    <a href="https://todo.com" target="_blank">
+                        TODO 
+                    </a>
+                </dd>
+            </div>
+        </dl>
+    </section>
+{/if}
+
+{#if isInvitedToParty}
+    <section>
+        <h2>Friends' Celebration</h2>
+
+        <dl>
+            <div class={partyInfoDirection}>
+                <dt>Date</dt>
+
+                <dd>18/07/2026</dd>
+            </div>
+
+            <div class={partyInfoDirection}>
+                <dt>Start</dt>
+
+                <dd>10pm</dd>
+            </div>
+
+            <div class={partyInfoDirection}>
+                <dt>Dress</dt>
+
+                <dd>
+                    <a href="#dress-code">See dress code</a>
+                </dd>
+            </div>
+
+            <div class={partyInfoDirection}>
+                <dt>Drinks</dt>
+
+                <dd>A bar tab will available</dd>
+            </div>
+
+            <div class={partyInfoDirection}>
+                <dt>Location</dt>
+
+                <dd>
+                    <a href="https://maps.app.goo.gl/Aozwkd9nLvSR7hac8" target="_blank">
+                        Hey Chica! 
+                    </a> - Fortitude Valley
+                </dd>
+            </div>
+        </dl>
+    </section>
+{/if}
 
 <section id="dress-code">
     <h2>Dress Code</h2>
 
-    <dl>
-        <div class="left option">
-            <dt>Option 1</dt>
+    <p>
+        {#if isInvitedToDinner && isInvitedToParty}
+            The dress code is <b>cocktail</b> attire for the church ceremony, the family dinner & the friends' celebration.
+        {:else if isInvitedToDinner}
+            The dress code is <b>cocktail</b> attire for both the church ceremony and the family dinner.
+        {:else if isInvitedToParty}
+            The dress code is <b>cocktail</b> attire for both the church ceremony and the friends' celebration.
+        {/if}
+    </p>
 
-            <dd>Wear cocktail attire to the ceremony and change into Indian attire for the reception</dd>
-        </div>
-
-        <div class="right option">
-            <dt>Option 2</dt>
-
-            <dd>Wear Indian attire for both the ceremony and the reception</dd>
-        </div>
-    </dl>
-
-    <h3>Cocktail Attire</h3>
-
-    <h3>Indian Attire</h3>
+    {#if isInvitedToDinner || isInvitedToParty}
+        <p>You may get changed between events if you wish.</p>
+    {/if}
 </section>
 
 <style>
@@ -108,12 +165,8 @@
         padding-bottom: 4rem;
     }
 
-    h2, h3 {
+    h2, p {
         text-align: center;
-    }
-
-    h3 {
-        margin-top: 4rem;
     }
 
     dl {
@@ -144,17 +197,6 @@
     dl div.right {
         border-right: 1px solid var(--secondary-color);
         text-align: right;
-    }
-
-    dl div.option {
-
-        dt {
-            font-size: 1.4rem;
-        }
-
-        dd {
-            font-size: 1.2rem;
-        }
     }
 
     dd {
