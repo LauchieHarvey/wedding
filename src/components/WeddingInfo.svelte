@@ -46,6 +46,12 @@
                 </a>
             </dd>
         </div>
+
+        <div class="left">
+            <dt>Refreshments</dt>
+
+            <dd>Following the ceremony you are invited to enjoy food and wine on the lawn.</dd>
+        </div>
     </dl>
 </section>
 
@@ -151,6 +157,8 @@
             The dress code is <b>cocktail</b> attire for both the church ceremony and the family dinner.
         {:else if isInvitedToParty}
             The dress code is <b>cocktail</b> attire for both the church ceremony and the friends' celebration.
+        {:else}
+            The dress code is <b>cocktail</b> attire.
         {/if}
     </p>
 

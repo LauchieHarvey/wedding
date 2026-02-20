@@ -14,7 +14,9 @@
         <a href="/rsvp">RSVP Now</a>
     </section>
 
-    <img src="/botanical-gardens.jpg" alt="Hugging in the botanical gardens"/>
+    <div class="image-container">
+        <img src="/botanical-gardens.jpg" alt="Hugging in the botanical gardens"/>
+    </div>
 
     <WeddingInfo/>
 </main>
@@ -22,6 +24,10 @@
 <style>
     .cta {
         text-align: center;
+        border-bottom: 1px solid var(--secondary-color);
+    }
+
+    .image-container {
         border-bottom: 1px solid var(--secondary-color);
     }
 
@@ -50,9 +56,28 @@
     }
 
     img {
+        display: block;
         width: 100svw;
         filter: grayscale(70%);
-        border-bottom: 1px solid var(--secondary-color);
+    }
+
+    @media (min-width:576px) {
+        img {
+            width: 40svw;
+            margin-top: 4rem;
+            margin-bottom: 4rem;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 1px solid var(--secondary-color);
+            box-shadow: 0px 0px 6px 0px var(--secondary-color);
+        }
+    }
+
+    @media (min-width:750px) {
+        img {
+            width: 25svw;
+        }
     }
 
 </style>
