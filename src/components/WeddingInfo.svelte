@@ -162,11 +162,6 @@
         border-left: 1px solid var(--secondary-color);
     }
 
-    dl div.right {
-        border-right: 1px solid var(--secondary-color);
-        text-align: right;
-    }
-
     dd {
         font-size: 1.4rem;
         margin: 0;
