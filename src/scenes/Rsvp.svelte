@@ -5,7 +5,7 @@
     import { db } from "../main";
     import { RsvpStorageService } from "../services/rsvp-storage-service";
     import toast from "svelte-5-french-toast";
-    import { Link } from "svelte5-router";
+    import { link, Link } from "svelte5-router";
     import { Attendance } from "../types";
 
     const fullNameKey = "full-name";
@@ -51,6 +51,8 @@
 <Header/>
 
 <main>
+    <a href="/" use:link> &lt; Home</a>
+
     <section>
         <h1>RSVP</h1>
 
@@ -102,6 +104,15 @@
 </main>
 
 <style>
+    main {
+        padding: 0.4rem;
+    }
+
+    a {
+        margin-left: 0.5rem;
+        display: block;
+    }
+
     section {
         border-bottom: 1px solid var(--secondary-color);
         padding-bottom: 4rem;

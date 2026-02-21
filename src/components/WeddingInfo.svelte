@@ -1,18 +1,3 @@
-<script>
-    const urlParams = new URLSearchParams(window.location.search);
-
-    if (urlParams.has("dinner")) {
-        localStorage.setItem("dinner", "true");
-    }
-    if (urlParams.has("party")) {
-        localStorage.setItem("party", "true");
-    }
-
-    const isInvitedToDinner = localStorage.getItem("dinner") != null;
-    const isInvitedToParty = localStorage.getItem("party") != null;
-
-    const partyInfoDirection = isInvitedToDinner ? "left" : "right";
-</script>
 <section>
     <h2>Wedding Ceremony</h2>
 
@@ -26,14 +11,14 @@
         <div class="left">
             <dt>Start</dt>
 
-            <dd>11am</dd>
+            <dd>11am <span class="footnote">- Please be seated by 10:45am</span></dd>
         </div>
 
         <div class="left">
             <dt>Dress</dt>
 
             <dd>
-                <a href="#dress-code">See dress code</a>
+                Cocktail attire
             </dd>
         </div>
 
@@ -50,121 +35,87 @@
         <div class="left">
             <dt>Refreshments</dt>
 
-            <dd>Following the ceremony you are invited to enjoy food and wine on the lawn.</dd>
+            <dd>Following the ceremony, please join us on the church lawn for light canap&eacute;s and refreshments.</dd>
         </div>
     </dl>
 </section>
 
-{#if isInvitedToDinner}
-    <section>
-        <h2>Family Reception</h2>
-
-        <dl>
-            <div class="right">
-                <dt>Date</dt>
-
-                <dd>18/07/2026</dd>
-            </div>
-
-            <div class="right">
-                <dt>Start</dt>
-
-                <dd>5:30pm</dd>
-            </div>
-
-            <div class="right">
-                <dt>Dress</dt>
-
-                <dd>
-                    <a href="#dress-code">See dress code</a>
-                </dd>
-            </div>
-
-            <div class="right">
-                <dt>Menu</dt>
-
-                <dd>
-                    <a href="https://todo.com" target="_blank">
-                        TODO
-                    </a>
-                </dd>
-            </div>
-
-            <div class="right">
-                <dt>Location</dt>
-
-                <dd>
-                    <a href="https://todo.com" target="_blank">
-                        TODO 
-                    </a>
-                </dd>
-            </div>
-        </dl>
-    </section>
-{/if}
-
-{#if isInvitedToParty}
-    <section>
-        <h2>Friends' Celebration</h2>
-
-        <dl>
-            <div class={partyInfoDirection}>
-                <dt>Date</dt>
-
-                <dd>18/07/2026</dd>
-            </div>
-
-            <div class={partyInfoDirection}>
-                <dt>Start</dt>
-
-                <dd>10pm</dd>
-            </div>
-
-            <div class={partyInfoDirection}>
-                <dt>Dress</dt>
-
-                <dd>
-                    <a href="#dress-code">See dress code</a>
-                </dd>
-            </div>
-
-            <div class={partyInfoDirection}>
-                <dt>Drinks</dt>
-
-                <dd>A bar tab will available</dd>
-            </div>
-
-            <div class={partyInfoDirection}>
-                <dt>Location</dt>
-
-                <dd>
-                    <a href="https://maps.app.goo.gl/Aozwkd9nLvSR7hac8" target="_blank">
-                        Hey Chica! 
-                    </a> - Fortitude Valley
-                </dd>
-            </div>
-        </dl>
-    </section>
-{/if}
-
-<section id="dress-code">
-    <h2>Dress Code</h2>
+<section id="getting-there">
+    <h2>Getting there</h2>
 
     <p>
-        {#if isInvitedToDinner && isInvitedToParty}
-            The dress code is <b>cocktail</b> attire for the church ceremony, the family dinner & the friends' celebration.
-        {:else if isInvitedToDinner}
-            The dress code is <b>cocktail</b> attire for both the church ceremony and the family dinner.
-        {:else if isInvitedToParty}
-            The dress code is <b>cocktail</b> attire for both the church ceremony and the friends' celebration.
-        {:else}
-            The dress code is <b>cocktail</b> attire.
-        {/if}
+        The church is <a href="https://maps.app.goo.gl/RFNFGL4USU2Bv3ZK7" target="_blank">St Mary's Kangaroo Point</a>. It's beautifully located overlooking the Brisbane River, just south of the Story Bridge.
     </p>
 
-    {#if isInvitedToDinner || isInvitedToParty}
-        <p>You may get changed between events if you wish.</p>
-    {/if}
+    <p>Whilst there is some onsite parking, we recommend public transport. There is a bus stop just 50m away from the church gate. If you must drive, please carpool.</p>
+
+    <p>You may take a <a href="https://saintmarys.org.au/virtual-tour" target="_blank">virtual tour</a> of the church grounds prior to arriving if you wish to get your bearings.</p>
+</section>
+
+<section id="faq">
+    <h2>FAQ</h2>
+
+    <dl>
+        <div class="left">
+            <dt>What time should I be seated in the church?</dt>
+
+            <dd>Please be seated at 10:45am. Thejas will walk down the aisle at 11am.</dd>
+        </div>
+
+        <div class="left">
+            <dt>What if I have dietary requirements?</dt>
+
+            <dd>Please reach out to a member of the family to inform us. We shall accommodate everyones' needs.</dd>
+        </div>
+
+        <div class="left">
+            <dt>When is the deadline for RSVP?</dt>
+
+            <dd>Please RSVP by the first of May this year.</dd>
+        </div>
+
+        <div class="left">
+            <dt>Can I bring a plus one?</dt>
+
+            <dd>If you wish to bring a plus one please let us know before the RSVP deadline.</dd>
+        </div>
+
+        <div class="left">
+            <dt>Is it an adults-only wedding?</dt>
+
+            <dd>
+                While we love your little ones, we have chosen to make our wedding day an adults-only celebration (14 or older).
+            </dd>
+        </div>
+
+        <div class="left">
+            <dt>What is the dress code?</dt>
+
+            <dd>
+                Cocktail attire. As the ceremony will be held in a church during winter, we suggest bringing a coat or wrap to stay warm. Suits or tailored separates are perfect for gentlemen, and cocktail-length dresses, elegant midi styles, or dressy separates are wonderful for ladies. Kindly avoid white or ivory.
+                <a href="https://www.theknot.com/content/cocktail-wedding-attire" target="_blank">Click here</a> for an in-depth guide.
+            </dd>
+        </div>
+
+        <div class="left">
+            <dt>I still have a question. Who can I contact?</dt>
+
+            <dd>
+                <ul>
+                    <li>
+                        Lauchie Harvey (groom)
+                        <ul>
+                            <li>By phone - ???</li>
+                            <li>By email - ???</li>
+                        </ul>
+                    </li>
+                    <li>Thejaswini Nanda (bride)</li>
+                    <li>Murray Harvey (Father of the groom)</li>
+                </ul>
+            </dd>
+        </div>
+    </dl>
+
 </section>
 
 <style>
@@ -173,8 +124,17 @@
         padding-bottom: 4rem;
     }
 
+    #getting-there {
+        padding: 0.4rem;
+    }
+
     h2, p {
         text-align: center;
+    }
+
+    .footnote {
+        opacity: 0.5;
+        font-size: 0.8em;
     }
 
     dl {
@@ -210,5 +170,13 @@
     dd {
         font-size: 1.4rem;
         margin: 0;
+    }
+
+    #faq dl div dt {
+        font-size: 1.3rem;
+    }
+
+    #faq dl div dd {
+        font-size: 1rem;
     }
 </style>

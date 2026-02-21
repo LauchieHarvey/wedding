@@ -53,6 +53,7 @@
     .cta a:hover {
         text-decoration: underline;
         text-decoration-thickness: 1px;
+        box-shadow: 0px 0px 2px var(--secondary-color);
     }
 
     img {

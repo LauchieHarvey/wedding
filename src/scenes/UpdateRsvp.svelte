@@ -195,7 +195,6 @@
 
     a {
         margin-left: 0.5rem;
-        margin-top: 0.5rem;
     }
 
     fieldset:nth-child(2n + 1) {
