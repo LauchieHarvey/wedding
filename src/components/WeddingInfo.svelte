@@ -81,10 +81,10 @@
         </div>
 
         <div class="left">
-            <dt>Is it an adults-only wedding?</dt>
+            <dt>Are children invited to the wedding?</dt>
 
             <dd>
-                While we love your little ones, we have chosen to make our wedding day an adults-only celebration (14 or older).
+                While we love your little ones, we have chosen to only invite guests 14 years or older.
             </dd>
         </div>
 
@@ -92,26 +92,8 @@
             <dt>What is the dress code?</dt>
 
             <dd>
-                Cocktail attire. As the ceremony will be held in a church during winter, we suggest bringing a coat or wrap to stay warm. Suits or tailored separates are perfect for gentlemen, and cocktail-length dresses, elegant midi styles, or dressy separates are wonderful for ladies. Kindly avoid white or ivory.
+                Cocktail attire. Kindly avoid white or ivory.
                 <a href="https://www.theknot.com/content/cocktail-wedding-attire" target="_blank">Click here</a> for an in-depth guide.
-            </dd>
-        </div>
-
-        <div class="left">
-            <dt>I still have a question. Who can I contact?</dt>
-
-            <dd>
-                <ul>
-                    <li>
-                        Lauchie Harvey (groom)
-                        <ul>
-                            <li>By phone - ???</li>
-                            <li>By email - ???</li>
-                        </ul>
-                    </li>
-                    <li>Thejaswini Nanda (bride)</li>
-                    <li>Murray Harvey (Father of the groom)</li>
-                </ul>
             </dd>
         </div>
     </dl>

@@ -103,30 +103,16 @@
                     <legend>{rsvp["full-name"]}</legend>
 
                     <div>
-                        <input 
-                            id={`both-${rsvp.id}`}
-                            type="radio"
-                            name={`attendance-${rsvp.id}`}
-                            value={Attendance.BOTH}
-                            checked={rsvp.attendance === Attendance.BOTH}
-                        />
-
-                        <label for={`both-${rsvp.id}`}>
-                            Attending ceremony and reception
-                        </label>
-                    </div>
-
-                    <div>
                         <input
                             id={`ceremony-${rsvp.id}`}
                             type="radio"
                             name={`attendance-${rsvp.id}`}
-                            value={Attendance.CEREMONY_ONLY}
-                            checked={rsvp.attendance === Attendance.CEREMONY_ONLY}
+                            value={Attendance.CEREMONY}
+                            checked={rsvp.attendance === Attendance.CEREMONY}
                         />
 
                         <label for={`ceremony-${rsvp.id}`}>
-                            Attending ceremony only
+                            Attending
                         </label>
                     </div>
 

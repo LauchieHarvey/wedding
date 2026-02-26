@@ -74,24 +74,18 @@
             </label>
 
             <fieldset>
-                <legend>I will be</legend>
+                <legend>I shall be</legend>
 
                 <div>
-                    <input type="radio" id="option-1" name="attendance" value={Attendance.BOTH} checked>
+                    <input type="radio" id="option-1" name="attendance" value={Attendance.CEREMONY} checked>
 
-                    <label for="option-1">attending the ceremony & the reception</label>
+                    <label for="option-1">attending</label>
                 </div>
 
                 <div>
-                    <input type="radio" id="option-2" name="attendance" value={Attendance.CEREMONY_ONLY}>
+                    <input type="radio" id="option-2" name="attendance" value={Attendance.NOT_COMING}>
 
-                    <label for="option-2">only attending the ceremony</label>
-                </div>
-
-                <div>
-                    <input type="radio" id="option-3" name="attendance" value={Attendance.NOT_COMING}>
-
-                    <label for="option-3">unable to attend</label>
+                    <label for="option-2">unable to attend</label>
                 </div>
             </fieldset>
 
