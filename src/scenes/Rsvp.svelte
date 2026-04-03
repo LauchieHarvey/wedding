@@ -18,13 +18,25 @@
     const handleSubmitRsvp = async (e: SubmitEvent) => {
         e.preventDefault();
 
-        isLoading = true;
-        const loadingToastId = toast.loading("Saving RSVP...", toastOptions);
-
         const data = new FormData(e.target as HTMLFormElement);
 
         const fullName = data.get(fullNameKey)?.toString();
         const attendance = data.get(attendanceKey)?.toString();
+
+        if (fullName?.trim().length === 0) {
+            toast.error("Name cannot be empty", toastOptions);
+            isLoading = false;
+            return;
+        }
+
+        if (fullName?.includes(" & ") || fullName?.includes(" and ")) {
+            toast.error("Please submit one person at a time.", toastOptions);
+            isLoading = false;
+            return;
+        }
+
+        isLoading = true;
+        const loadingToastId = toast.loading("Saving RSVP...", toastOptions);
 
         try {
             const res = await addDoc(
@@ -59,16 +71,16 @@
         <form onsubmit={handleSubmitRsvp}>
 
             <p>
-                Please submit your RSVPs before the 1st of May 2026
+                Please submit your RSVPs before the 1st of June 2026
                 {#if rsvpIds.length > 0}
                     <br/>
                     <br/>
-                    You have submitted {rsvpIds.length} RSVPs on this device. Click <Link to="/rsvp/update">here</Link> to edit them.
+                    You have submitted {rsvpIds.length} {rsvpIds.length > 1 ? "RSVPs" : "RSVP"} on this device. Click <Link to="/rsvp/update">here</Link> to edit {rsvpIds.length > 1 ? "them": "it"}.
                 {/if}
             </p>
 
             <label class="full-name-label">
-                <span>Full name</span>
+                <span>Full name <span class="footnote">(one guest at a time)</span></span>
 
                 <input name={fullNameKey} type="text" autocomplete="name" required/>
             </label>
@@ -178,6 +190,11 @@
     fieldset div {
         display: flex;
         gap: 0.5rem;
+    }
+
+    .footnote {
+        opacity: 0.6;
+        font-size: 0.8em;
     }
 
 </style>
