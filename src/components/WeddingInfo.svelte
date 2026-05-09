@@ -52,6 +52,32 @@
     <p>You may take a <a href="https://saintmarys.org.au/virtual-tour" target="_blank">virtual tour</a> of the church grounds prior to arriving if you wish to get your bearings.</p>
 </section>
 
+<section id="gifts">
+    <h2>Gifts</h2>
+
+    <p>
+        <b>We do not expect gifs</b>. It is more than enough that you will be there to celebrate with us. 
+        If you still wish to give a gift then please consider one of the following options.
+    </p>
+
+    <dl>
+        <div class="left">
+            <dt>Wishing well</dt>
+
+            <dd>A wishing well will be available during Refreshments after the wedding ceremony.</dd>
+        </div>
+
+        <div class="left">
+            <dt>Charitable donation</dt>
+
+            <dd>
+                A donation to an effective charity would mean the world to us. If you don't have a favourite charity, 
+                you can find some of the world's most effective ones <a href="https://www.givewell.org/charities/top-charities" target="_blank">here</a>.
+            </dd>
+        </div>
+    </dl>
+</section>
+
 <section id="faq">
     <h2>FAQ</h2>
 
@@ -71,7 +97,7 @@
         <div class="left">
             <dt>When is the deadline for RSVP?</dt>
 
-            <dd>Please RSVP by the first of May this year.</dd>
+            <dd>Please RSVP by the first of June this year.</dd>
         </div>
 
         <div class="left">
@@ -123,8 +149,6 @@
         display: flex;
         flex-direction: column;
         gap: 2.5rem;
-        margin-left: 3rem;
-        margin-right: 3rem;
 
         @media (min-width:1024px) {
             margin-left: 30svw;
@@ -149,11 +173,30 @@
         margin: 0;
     }
 
-    #faq dl div dt {
+    #faq dl div dt, #gifts dl div dt {
         font-size: 1.3rem;
     }
 
-    #faq dl div dd {
+    #faq dl div dd, #gifts dl div dd {
         font-size: 1rem;
+    }
+
+    #gifts {
+        padding: 0.4rem;
+    }
+
+    #gifts p {
+        max-width: 700px;
+        text-align: left;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 3rem;
+    }
+
+    #getting-there p {
+        max-width: 700px;
+        text-align: left;
+        margin-right: auto;
+        margin-left: auto;
     }
 </style>
